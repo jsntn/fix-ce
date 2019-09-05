@@ -20,13 +20,13 @@ for (var i=0; i < vars.length; i++) {
 }
 
 // CJK: www.unicode.org/charts/
-var CJKcharacter = "[\u4E00-\u9FCC\u3400-\u4DB5\uFA0E\uFA0F\uFA11\uFA13\uFA14\uFA1F\uFA21\uFA23\uFA24\uFA27-\uFA29]|[\ud840-\ud868][\udc00-\udfff]|\ud869[\udc00-\uded6\udf00-\udfff]|[\ud86a-\ud86c][\udc00-\udfff]|\ud86d[\udc00-\udf34\udf40-\udfff]|\ud86e[\udc00-\udc1d]"
+var CJKcharacter = "[\u4E00-\u9FCC\u3400-\u4DB5\uFA0E\uFA0F\uFA11\uFA13\uFA14\uFA1F\uFA21\uFA23\uFA24\uFA27-\uFA29\uFF1A]|[\ud840-\ud868][\udc00-\udfff]|\ud869[\udc00-\uded6\udf00-\udfff]|[\ud86a-\ud86c][\udc00-\udfff]|\ud86d[\udc00-\udf34\udf40-\udfff]|\ud86e[\udc00-\udc1d]"
 // ASCII Punctuation: www.unicode.org/charts/PDF/U0000.pdf
 // ! - u0021
 // ) - u0029
 // . - u002e
 // ? - u003f
-var punctuationMark = "\u0021\u0029\u002e\u003f"
+var punctuationMark = "\u0021|\u0029|\u002e|\u003f"
 
 try {
   x = document.getElementById(args['id']);
@@ -42,14 +42,14 @@ try {
   // single quotation mark after at least single letter:
   // done'
   // done.'
-  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z]${punctuationMark}?)\u2018`, 'g'), '$1&#39;');
-  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z]${punctuationMark}?)\u2019`, 'g'), '$1&#39;');
+  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z][${punctuationMark}]?)\u2018`, 'g'), '$1&#39;');
+  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z][${punctuationMark}]?)\u2019`, 'g'), '$1&#39;');
 
   // double quotation mark after at least single letter:
   // done"
   // done."
-  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z]${punctuationMark}?)\u201C`, 'g'), '$1&#34;');
-  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z]${punctuationMark}?)\u201D`, 'g'), '$1&#34;');
+  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z][${punctuationMark}]?)\u201C`, 'g'), '$1&#34;');
+  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z][${punctuationMark}]?)\u201D`, 'g'), '$1&#34;');
 
   // single quotation mark before at least single letter:
   // he said 'it is OK
