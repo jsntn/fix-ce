@@ -1,6 +1,6 @@
 #### Fix CE
 
-Fix CE is a tiny JavaScript to fix the composition for Chinese-English mixed web post.
+Fix CE is a tiny JavaScript to fix the composition for Chinese-English mixed web posts.
 
 ## Usage
 
