@@ -2,7 +2,7 @@
  * a tiny JavaScript to fix the composition for Chinese-English mixed web posts.
  * https://github.com/jsntn/fix-ce
  *
- * @version  0.2
+ * @version  0.3
  *
  * @author  Jason TIAN (https://jsntn.com)
  *
@@ -59,6 +59,10 @@ try {
   x.innerHTML = x.innerHTML.replace(new RegExp('([a-zA-Z] )\u2019([a-zA-Z])', 'g'), '$1&#39;$2');
   x.innerHTML = x.innerHTML.replace(new RegExp(`([^${CJKcharacter}])\u2018([a-zA-Z])`, 'g'), '$1&#39;$2');
   x.innerHTML = x.innerHTML.replace(new RegExp(`([^${CJKcharacter}])\u2019([a-zA-Z])`, 'g'), '$1&#39;$2');
+  // single quotation mark for Non-CJK characters:
+  // '>/dev/null 2>&1'
+  x.innerHTML = x.innerHTML.replace(new RegExp(`([^${CJKcharacter}])\u2018([^${CJKcharacter}])`, 'g'), '$1&#39;$2');
+  x.innerHTML = x.innerHTML.replace(new RegExp(`([^${CJKcharacter}])\u2019([^${CJKcharacter}])`, 'g'), '$1&#39;$2');
 
   // double quotation mark before at least single letter:
   // he said "it is OK
@@ -67,6 +71,10 @@ try {
   x.innerHTML = x.innerHTML.replace(new RegExp('([a-zA-Z] )\u201D([a-zA-Z])', 'g'), '$1&#34;$2');
   x.innerHTML = x.innerHTML.replace(new RegExp(`([^${CJKcharacter}])\u201C([a-zA-Z])`, 'g'), '$1&#34;$2');
   x.innerHTML = x.innerHTML.replace(new RegExp(`([^${CJKcharacter}])\u201D([a-zA-Z])`, 'g'), '$1&#34;$2');
+  // double quotation mark for Non-CJK characters:
+  // ">/dev/null 2>&1" and "2>&1 >/dev/null"
+  x.innerHTML = x.innerHTML.replace(new RegExp(`([^${CJKcharacter}])\u201C([^${CJKcharacter}])`, 'g'), '$1&#34;$2');
+  x.innerHTML = x.innerHTML.replace(new RegExp(`([^${CJKcharacter}])\u201D([^${CJKcharacter}])`, 'g'), '$1&#34;$2');
   // https://en.wikipedia.org/wiki/List_of_Unicode_characters
   // https://theasciicode.com.ar/ascii-printable-characters/double-quotes-quotation-mark-speech-marks-ascii-code-34.html
   // https://theasciicode.com.ar/ascii-printable-characters/double-quotes-quotation-mark-speech-marks-ascii-code-39.html
