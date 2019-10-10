@@ -42,14 +42,14 @@ try {
   // single quotation mark after at least single letter:
   // done'
   // done.'
-  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z][${punctuationMark}]?)\u2018`, 'g'), '$1&#39;');
-  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z][${punctuationMark}]?)\u2019`, 'g'), '$1&#39;');
+  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z][${punctuationMark}]?)\u2018([^${CJKcharacter}])`, 'g'), '$1&#39;$2');
+  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z][${punctuationMark}]?)\u2019([^${CJKcharacter}])`, 'g'), '$1&#39;$2');
 
   // double quotation mark after at least single letter:
   // done"
   // done."
-  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z][${punctuationMark}]?)\u201C`, 'g'), '$1&#34;');
-  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z][${punctuationMark}]?)\u201D`, 'g'), '$1&#34;');
+  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z][${punctuationMark}]?)\u201C([^${CJKcharacter}])`, 'g'), '$1&#34;$2');
+  x.innerHTML = x.innerHTML.replace(new RegExp(`([a-zA-Z][${punctuationMark}]?)\u201D([^${CJKcharacter}])`, 'g'), '$1&#34;$2');
 
   // single quotation mark before at least single letter:
   // he said 'it is OK
